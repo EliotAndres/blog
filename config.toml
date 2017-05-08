@@ -10,11 +10,11 @@ googleAnalytics = ""
 # Disable comments by leaving disqusShortname empty
 
 [params]
-	name = "Eliot Andres"
+	name = "Eliot Andres blog"
 	description = "While the models are training"
-	bio = "Deep learning engineer"
+	bio = "While the models are training..."
 	# Enter optionally your twitter account
-	twitter = "Your Twitter account"
+	twitter = ""
 	enableRSS = true
 
 	# Integrate Javascript files or stylesheets by adding the url to the external assets or by
