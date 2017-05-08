@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eliot Andres blog</title>
+    <link>http://blog.ndres.me/</link>
+    <description>Recent content on Eliot Andres blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>While the models are training: a deep learning blog</copyright>
+    <lastBuildDate>Mon, 08 May 2017 14:52:12 +0200</lastBuildDate>
+    
+	<atom:link href="http://blog.ndres.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Faster inference in Tensorflow using XLA.</title>
+      <link>http://blog.ndres.me/post/faster-inference-tensorflow/</link>
+      <pubDate>Mon, 08 May 2017 14:52:12 +0200</pubDate>
+      
+      <guid>http://blog.ndres.me/post/faster-inference-tensorflow/</guid>
+      <description>About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
+For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
+For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link].</description>
+    </item>
+    
+    <item>
+      <title>Turn any Jupyter notebook into a RESTful Api</title>
+      <link>http://blog.ndres.me/post/jupyter-notebook-rest-api/</link>
+      <pubDate>Sun, 07 May 2017 16:25:35 +0200</pubDate>
+      
+      <guid>http://blog.ndres.me/post/jupyter-notebook-rest-api/</guid>
+      <description>I read Good to Great in January 2016. An awesome read sharing detailed analysis on how good companies became great.</description>
+    </item>
+    
+  </channel>
+</rss>

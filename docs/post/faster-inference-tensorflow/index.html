@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Eliot Andres">
+<meta name="description" content="While the models are training">
+<meta name="generator" content="Hugo 0.20.7" />
+<title>Faster inference in Tensorflow using XLA.</title>
+<link rel="shortcut icon" href="http://blog.ndres.me/images/favicon.png">
+<link rel="stylesheet" href="http://blog.ndres.me/css/style.css">
+<link rel="stylesheet" href="http://blog.ndres.me/css/highlight.css">
+
+
+
+<link rel="stylesheet" href="http://blog.ndres.me/css/monosocialiconsfont.css">
+
+
+
+<link href="http://blog.ndres.me/index.xml" rel="alternate" type="application/rss+xml" title="Eliot Andres blog" />
+
+
+<meta property="og:title" content="Faster inference in Tensorflow using XLA." />
+<meta property="og:description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
+For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
+For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.ndres.me/post/faster-inference-tensorflow/" />
+
+
+
+<meta property="article:published_time" content="2017-05-08T14:52:12&#43;02:00"/>
+<meta property="article:modified_time" content="2017-05-08T14:52:12&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Faster inference in Tensorflow using XLA.">
+<meta itemprop="description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
+For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
+For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link].">
+
+
+<meta itemprop="dateModified" content="2017-05-08T14:52:12&#43;02:00" />
+<meta itemprop="wordCount" content="345">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Faster inference in Tensorflow using XLA."/>
+<meta name="twitter:title" content="Faster inference in Tensorflow using XLA."/>
+<meta name="twitter:description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
+For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
+For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]."/>
+<meta name="twitter:site" content="@https://www.twitter.com/eliotandres"/>
+
+
+    </head>
+<body>
+    <nav class="main-nav">
+	
+		<a href='http://blog.ndres.me'><span class="arrow">←</span> While the models are training</a>
+	
+
+	
+
+
+	
+		<a class="cta" href="http://blog.ndres.me/index.xml">Subscribe</a>
+	
+</nav>
+
+    <section id="wrapper">
+        
+        
+<article class="post">
+    <header>
+        <h1>Faster inference in Tensorflow using XLA.</h1>
+        <h2 class="headline">
+        May 8, 2017
+        <br>
+        
+        </h2>
+    </header>
+    <section id="post-body">
+        
+
+<h1 id="about-inference">About inference</h1>
+
+<p>Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.</p>
+
+<p>For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.</p>
+
+<p>For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]. If you evaluate the cost in GPU-hours*, doubling the inference speed means halving your costs. For companies making self-driving cars, inference means expecting the result of the evaluation as fast as possible. In this case, halving the response time could save lives.</p>
+
+<p>*<em>The tensorflow authors recommend using CPU’s for inference</em></p>
+
+<h1 id="what-is-xla">What is XLA</h1>
+
+<p>During the tensorflow summit 2017, the Tensorflow team introduced <a href="https://www.tensorflow.org/performance/xla/">XLA</a> (Accelerated Linear Algebra). It is an experimental framework aiming at optimizing Tensorflow graphs.
+ It should be able to improve memory usage, model footprint, portability and more importantly, execution speed. Using XLA can lead to improvement of up to 80% !</p>
+
+<p>If you want to learn more about XLA, you should watch the summit&rsquo;s presentation <a href="https://www.youtube.com/watch?v=kAOanJczHA0">here</a>.</p>
+
+<h1 id="using-xla">Using XLA</h1>
+
+<p>In this tutorial, I’ll show you how to use XLA. Important: At the time of writing, you have to compile with a special flag in order to Tensorflow in order benefit from XLA. Building Tensorflow is fairly straightforward and takes about one hour on a regular machine. [link]</p>
+
+<p>Once built, enabling XLA for your graph is very simple:</p>
+
+<pre><code>config = tf.ConfigProto()
+
+config.graph_options.optimizer_options.global_jit_level = tf.OptimizerOptions.ON_1
+
+sess = tf.Session(config=config)
+</code></pre>
+
+<p><em>(Once again, if Tensorflow was not built with XLA, this flag will be useless)</em></p>
+
+<h1 id="what-are-the-performance-gains">What are the performance gains ?</h1>
+
+<pre><code>With:    1.56 
+Without: 2.44 
+</code></pre>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>For production workloads, inference speed matters the most. Google is even designing custom chips, TPUs, to improve evaluation performance (for them what matters is [Wh/operation (check unit and link)]. A simple flag can improve performance by 30%, leading me to believe that there might be free lunches after all…</p>
+
+    </section>
+</article>
+
+<footer id="post-meta" class="clearfix">
+    <a href="https://twitter.com/Your%20Twitter%20account">
+    <img class="avatar" src="http://blog.ndres.me/images/avatar.png">
+    <div>
+        <span class="dark">Eliot Andres</span>
+        <span>Deep Learning Engineer at Linkfluence</span>
+    </div>
+    </a>
+    <section id="sharing">
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fblog.ndres.me%2fpost%2ffaster-inference-tensorflow%2f - Faster%20inference%20in%20Tensorflow%20using%20XLA. by @Your%20Twitter%20account"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+    </section>
+</footer>
+
+
+
+<ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+
+    
+    
+    
+        <li>
+            <a href="/post/jupyter-notebook-rest-api/">Turn any Jupyter notebook into a RESTful Api<aside class="dates">May 7 2017</aside></a>
+        </li>
+    
+</ul>
+
+
+
+        <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    
+    <a class="symbol" href="https://www.github.com/eliotandres">
+        circlegithubalt
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/eliotandres">
+        circletwitterbird
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+        While the models are training: a deep learning blog
+    
+    </p>
+</footer>
+
+    </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://blog.ndres.me/js/main.js"></script>
+<script src="http://blog.ndres.me/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>
