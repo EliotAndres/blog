@@ -29,7 +29,9 @@ For companies like Facebook, inference means applying deep learning to hundreds 
       <pubDate>Sun, 07 May 2017 16:25:35 +0200</pubDate>
       
       <guid>http://blog.ndres.me/post/jupyter-notebook-rest-api/</guid>
-      <description></description>
+      <description>Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?
+In this tutorial, I&amp;rsquo;ll show you how to make a simple api that converts radians to degrees. We should end up with something like this:
+$ curl &amp;quot;http://serverIp:8888/convert?angle=180&amp;quot; #{&amp;quot;convertedAngle&amp;quot;: 3.141592653589793}  Installation Assuming that jupyter notebook is already installed, first install the kernel_gateway:</description>
     </item>
     
   </channel>

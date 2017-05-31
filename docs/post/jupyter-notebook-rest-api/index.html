@@ -22,7 +22,9 @@
 
 
 <meta property="og:title" content="Turn any Jupyter notebook into a RESTful Api" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?
+In this tutorial, I&rsquo;ll show you how to make a simple api that converts radians to degrees. We should end up with something like this:
+$ curl &quot;http://serverIp:8888/convert?angle=180&quot; #{&quot;convertedAngle&quot;: 3.141592653589793}  Installation Assuming that jupyter notebook is already installed, first install the kernel_gateway:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.ndres.me/post/jupyter-notebook-rest-api/" />
 
@@ -44,11 +46,13 @@
 
 
 <meta itemprop="name" content="Turn any Jupyter notebook into a RESTful Api">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?
+In this tutorial, I&rsquo;ll show you how to make a simple api that converts radians to degrees. We should end up with something like this:
+$ curl &quot;http://serverIp:8888/convert?angle=180&quot; #{&quot;convertedAngle&quot;: 3.141592653589793}  Installation Assuming that jupyter notebook is already installed, first install the kernel_gateway:">
 
 
 <meta itemprop="dateModified" content="2017-05-07T16:25:35&#43;02:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="264">
 
 
 
@@ -62,7 +66,9 @@
 
 <meta name="twitter:text:title" content="Turn any Jupyter notebook into a RESTful Api"/>
 <meta name="twitter:title" content="Turn any Jupyter notebook into a RESTful Api"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?
+In this tutorial, I&rsquo;ll show you how to make a simple api that converts radians to degrees. We should end up with something like this:
+$ curl &quot;http://serverIp:8888/convert?angle=180&quot; #{&quot;convertedAngle&quot;: 3.141592653589793}  Installation Assuming that jupyter notebook is already installed, first install the kernel_gateway:"/>
 <meta name="twitter:site" content="@https://www.twitter.com/eliotandres"/>
 
 
@@ -95,6 +101,72 @@
     </header>
     <section id="post-body">
         
+
+<p>Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?</p>
+
+<p>In this tutorial, I&rsquo;ll show you how to make a simple api that converts radians to degrees. We should end up with something like this:</p>
+
+<pre><code>$ curl &quot;http://serverIp:8888/convert?angle=180&quot;
+#{&quot;convertedAngle&quot;: 3.141592653589793}
+</code></pre>
+
+<h1 id="installation">Installation</h1>
+
+<p>Assuming that jupyter notebook is already installed, first install the kernel_gateway:</p>
+
+<pre><code>pip install jupyter_kernel_gateway
+jupyter kernelgateway --generate-config
+</code></pre>
+
+<p>If you want your api to be accessible from other computers, edit the <code>~/.jupyter/jupyter_kernel_gateway_config.py</code> file. Replace</p>
+
+<pre><code># c.KernelGatewayApp.ip = '127.0.0.1'
+</code></pre>
+
+<p>with</p>
+
+<pre><code>c.KernelGatewayApp.ip = '*'
+</code></pre>
+
+<h1 id="creating-the-api">Creating the API</h1>
+
+<p>Create a notebook with 2 cells. The first one:</p>
+
+<pre><code>import math
+import json
+</code></pre>
+
+<p>This cell will only be run once, when the notebook is loaded. You can perform any initialization you want here.</p>
+
+<p>And the second one:</p>
+
+<pre><code># GET /convert
+req = json.loads(REQUEST)
+args = req['args']
+
+if 'angle' not in args:
+  print(json.dumps({'convertedAngle': None}))
+else:
+  # Note the [0] when retrieving the argument.
+  # This is because you could potentially pass multiple angles.
+  angle = int(args['angle'][0])
+  converted = math.radians(angle)
+  print(json.dumps({'convertedAngle': converted}))
+</code></pre>
+
+<p>The first line is to indicate to the kernel gateway that we want to listen to the <code>/convert</code> route. This cell will be run on each call.</p>
+
+<p>Finally, run your notebook:</p>
+
+<pre><code>$ jupyter kernelgateway --KernelGatewayApp.api='kernel_gateway.notebook_http' --KernelGatewayApp.seed_uri='/home/username/Notebook.ipynb'
+#[KernelGatewayApp] Kernel started: 72515fd8-6314-4d65-9f48-8214756850d7
+#[KernelGatewayApp] Registering resource: /convert, methods: (['GET'])
+#[KernelGatewayApp] Registering resource: /_api/spec/swagger.json, methods: (GET)
+#[KernelGatewayApp] Jupyter Kernel Gateway at http://*:8888
+</code></pre>
+
+<p>And there you go, you have your api ! This can of course be used to serve predictions from a deep learning model.</p>
+
     </section>
 </article>
 
