@@ -48,7 +48,7 @@ Once built, enabling XLA for your graph is very simple:
 # What are the performance gains ?
 
 I ran a small benchmark to test-out XLA's performance on a small RNN. I got a 
-~30% gain in speed on GPU! The code is available here. 
+~30% gain in speed on GPU! The code is available [here](https://gist.github.com/EliotAndres/5497b763932f03dc46d3089e3b64c341). 
 
 # Conclusion
 I should underline that your mileage may vary, XLA is not a magic perfomance flag.
