@@ -44,7 +44,6 @@ Once built, enabling XLA for your graph is very simple:
     config.graph_options.optimizer_options.global_jit_level = tf.OptimizerOptions.ON_1
 
     sess = tf.Session(config=config)
-   
 
 # What are the performance gains ?
 

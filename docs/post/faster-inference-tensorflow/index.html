@@ -24,7 +24,7 @@
 <meta property="og:title" content="Faster inference in Tensorflow using XLA." />
 <meta property="og:description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
 For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
-For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]." />
+What is XLA During the tensorflow summit 2017, the Tensorflow team introduced XLA (Accelerated Linear Algebra)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.ndres.me/post/faster-inference-tensorflow/" />
 
@@ -48,11 +48,11 @@ For companies like Facebook, inference means applying deep learning to hundreds 
 <meta itemprop="name" content="Faster inference in Tensorflow using XLA.">
 <meta itemprop="description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
 For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
-For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link].">
+What is XLA During the tensorflow summit 2017, the Tensorflow team introduced XLA (Accelerated Linear Algebra).">
 
 
 <meta itemprop="dateModified" content="2017-05-08T14:52:12&#43;02:00" />
-<meta itemprop="wordCount" content="345">
+<meta itemprop="wordCount" content="331">
 
 
 
@@ -68,7 +68,7 @@ For companies like Facebook, inference means applying deep learning to hundreds 
 <meta name="twitter:title" content="Faster inference in Tensorflow using XLA."/>
 <meta name="twitter:description" content="About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
 For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
-For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]."/>
+What is XLA During the tensorflow summit 2017, the Tensorflow team introduced XLA (Accelerated Linear Algebra)."/>
 <meta name="twitter:site" content="@https://www.twitter.com/eliotandres"/>
 
 
@@ -108,20 +108,35 @@ For companies like Facebook, inference means applying deep learning to hundreds 
 
 <p>For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.</p>
 
-<p>For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link]. If you evaluate the cost in GPU-hours*, doubling the inference speed means halving your costs. For companies making self-driving cars, inference means expecting the result of the evaluation as fast as possible. In this case, halving the response time could save lives.</p>
-
-<p>*<em>The tensorflow authors recommend using CPU’s for inference</em></p>
-
 <h1 id="what-is-xla">What is XLA</h1>
 
 <p>During the tensorflow summit 2017, the Tensorflow team introduced <a href="https://www.tensorflow.org/performance/xla/">XLA</a> (Accelerated Linear Algebra). It is an experimental framework aiming at optimizing Tensorflow graphs.
  It should be able to improve memory usage, model footprint, portability and more importantly, execution speed. Using XLA can lead to improvement of up to 80% !</p>
 
-<p>If you want to learn more about XLA, you should watch the summit&rsquo;s presentation <a href="https://www.youtube.com/watch?v=kAOanJczHA0">here</a>.</p>
+<p>If you want to learn more about XLA, you should watch the summit&rsquo;s presentation
+ <a href="https://www.youtube.com/watch?v=kAOanJczHA0">here</a> or read about it <a href="https://www.tensorflow.org/performance/xla/">here</a>.</p>
+
+<p>Basically, XLA is about optimizing your graph. One example might be that instead
+of doing:</p>
+
+<pre><code>a = b * c + g
+d = b * c * e
+</code></pre>
+
+<p>It would be better to do:</p>
+
+<pre><code>tmp = b * c
+a = tmp + g
+d = tmp * e
+</code></pre>
+
+<p>This is one optimisation example but XLA comes with many others</p>
 
 <h1 id="using-xla">Using XLA</h1>
 
-<p>In this tutorial, I’ll show you how to use XLA. Important: At the time of writing, you have to compile with a special flag in order to Tensorflow in order benefit from XLA. Building Tensorflow is fairly straightforward and takes about one hour on a regular machine. [link]</p>
+<p>In this tutorial, I’ll show you how to use XLA.</p>
+
+<p><strong>Important</strong>: At the time of writing, you have to compile with a special flag in order to Tensorflow in order benefit from XLA. <a href="https://www.tensorflow.org/install/install_sources">Building Tensorflow</a> is fairly straightforward and takes about one hour on a regular machine.</p>
 
 <p>Once built, enabling XLA for your graph is very simple:</p>
 
@@ -132,17 +147,15 @@ config.graph_options.optimizer_options.global_jit_level = tf.OptimizerOptions.ON
 sess = tf.Session(config=config)
 </code></pre>
 
-<p><em>(Once again, if Tensorflow was not built with XLA, this flag will be useless)</em></p>
-
 <h1 id="what-are-the-performance-gains">What are the performance gains ?</h1>
 
-<pre><code>With:    1.56 
-Without: 2.44 
-</code></pre>
+<p>I ran a small benchmark to test-out XLA&rsquo;s performance on a small RNN. I got a
+~30% gain in speed on GPU! The code is available here.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>For production workloads, inference speed matters the most. Google is even designing custom chips, TPUs, to improve evaluation performance (for them what matters is [Wh/operation (check unit and link)]. A simple flag can improve performance by 30%, leading me to believe that there might be free lunches after all…</p>
+<p>I should underline that your mileage may vary, XLA is not a magic perfomance flag.
+But the Tensorflow team is constantly working on it so it is worth trying.</p>
 
     </section>
 </article>

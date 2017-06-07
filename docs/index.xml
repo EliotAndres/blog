@@ -20,7 +20,7 @@
       <guid>http://blog.ndres.me/post/faster-inference-tensorflow/</guid>
       <description>About inference Using neural networks is primarily made of 2 phases: training your model and using it. The later part can also be called inference, forward pass or evaluation.
 For most researchers, most of the time is used by training : they have to retrain using different architectures or different parameters. However, if you are using deep learning in production, inference is the most critical step.
-For companies like Facebook, inference means applying deep learning to hundreds of millions of images each day [link].</description>
+What is XLA During the tensorflow summit 2017, the Tensorflow team introduced XLA (Accelerated Linear Algebra).</description>
     </item>
     
     <item>
