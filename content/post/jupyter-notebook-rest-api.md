@@ -1,8 +1,8 @@
 +++
 date = "2017-05-07T16:25:35+02:00"
 draft = false
-title = "Turn any Jupyter notebook into a RESTful Api"
-
+title = "Turn any Jupyter notebook into a REST API"
+summary = "In this tutorial, I'll show you how to create a small api for your Jupyter Notebook"
 +++
 
 Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?

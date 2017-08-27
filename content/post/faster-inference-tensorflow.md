@@ -2,6 +2,7 @@
 date = "2017-05-08T14:52:12+02:00"
 description = ""
 title = "Faster inference in Tensorflow using XLA."
+summary = "In this blog post, we'll investigate how to make Tensorflow faster with XLA"
 draft = false
 
 +++

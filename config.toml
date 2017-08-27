@@ -1,18 +1,20 @@
 # Site settings
-baseurl = "http://blog.ndres.me"
+baseurl = "http://ndres.me"
 themesDir = "themes"
 languageCode = "en-us"
 title = "Eliot Andres blog"
-theme = "hugo-cactus-theme"
-publishDir = "docs"
+theme = "hyde"
+
+DefaultContentLanguage = "en"
+
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
 # Disable comments by leaving disqusShortname empty
 
 [params]
-	name = "Eliot Andres blog"
+	name = "Eliot Andres"
 	description = "While the models are training"
-	bio = "While the models are training..."
+	bio = "I am a freelance deep learning engineer with a focus on porting models from prototypes to production. I have a thing for Tensorflow and computer vision. [More](/about/)"
 	# Enter optionally your twitter account
 	twitter = ""
 	enableRSS = true
@@ -34,7 +36,7 @@ googleAnalytics = ""
 	readMore = ""
 	copyright = "While the models are training: a deep learning blog"
 	# Sharing options and author information in posts
-	aboutAuthor = "Deep Learning Engineer at Linkfluence"
+	aboutAuthor = "Deep Learning Engineer"
 	tweet = ""
 	share = ""
 	# 404 page
@@ -50,3 +52,7 @@ googleAnalytics = ""
 [social]
     twitter  = "https://www.twitter.com/eliotandres"
     githubalt   = "https://www.github.com/eliotandres"
+
+[blackfriday]
+  plainIDAnchors = true
+  hrefTargetBlank = true

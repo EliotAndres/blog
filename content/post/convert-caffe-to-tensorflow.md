@@ -2,6 +2,7 @@
 date = "2017-06-07T23:02:15+02:00"
 description = ""
 title = "Converting a Caffe model to Tensorflow"
+summary = "In this tutorial, I'll show you how to convert the Places 365 model to Tensorflow"
 draft = false
 
 
@@ -82,12 +83,13 @@ It can happen that researchers need custom layers: they usually fork caffe. In t
 For complex layers, there are some small differences between Caffe and Tensorflow: you will have to look at the source code. For instance, LSTM gates are not concatenated in the same order in Tensorflow and in Caffe.
 
 What worked best for me was to:
+
 - Export Caffe's weights into an Numpy matrix
 - Run a dummy example into the first N layers in Caffe, store the output
 - Load the weights into your Tensorflow Graph, run the same example into the same first N layers but using Tensorflow this time
 - Compare the output. If it's not matching, check what's wrong
 - Increment N and repeat
 
-I was able to get a 10^-3 mean difference in the final output when transfering a convnet and a 10^-2 mean difference after a bi-LSTM. Not too bad !
+I was able to get a 10<sup>-3</sup> mean difference in the final output when transfering a convnet and a 10<sup>-2</sup> mean difference after a bi-LSTM. Not too bad !
 
 
