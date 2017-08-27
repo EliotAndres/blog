@@ -1,0 +1,26 @@
+{{ partial "head.html" . }}
+<body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
+
+<div class="content container">
+  {{ partial "nav.html" . }}
+
+  <div class="posts">
+
+    {{ range where .Data.Pages "Section" "post" }}
+    <div class="post">
+      <h1 class="post-title">
+        <a href="{{ .Permalink }}">
+          {{ .Title }}
+        </a>
+      </h1>
+
+
+      {{ if .Params.summary }}{{ .Params.summary }}{{ else }}{{ .Summary }}{{ end }}  </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "sidebar.html" . }}
+</body>
+
+</html>

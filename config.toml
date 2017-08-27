@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://ndres.me"
+baseurl = "http://ndres.me/"
 themesDir = "themes"
 languageCode = "en-us"
 title = "Eliot Andres blog"
@@ -8,7 +8,7 @@ theme = "hyde"
 DefaultContentLanguage = "en"
 
 # Enter your tracking code to enable Google Analytics
-googleAnalytics = ""
+googleAnalytics = "UA-105312541-1"
 # Disable comments by leaving disqusShortname empty
 
 [params]
