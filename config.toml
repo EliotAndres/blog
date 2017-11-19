@@ -14,7 +14,7 @@ googleAnalytics = "UA-105312541-1"
 [params]
 	name = "Eliot Andres"
 	description = "While the models are training"
-	bio = "I am a freelance deep learning engineer with a focus on porting models from prototypes to production. I have a thing for Tensorflow and computer vision. [More](/about/)"
+	bio = "I am a freelance machine learning engineer with a focus on porting models from prototypes to production. I have a thing for Tensorflow and computer vision. [More](/about/)"
 	# Enter optionally your twitter account
 	twitter = ""
 	enableRSS = true

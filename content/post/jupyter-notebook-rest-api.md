@@ -7,7 +7,7 @@ summary = "In this tutorial, I'll show you how to create a small api for your Ju
 
 Jupyter Notebooks are pretty awesome. They allow you to prototype and experiment with ease. But did you know that you can also use them as a backend ?
 
-In this tutorial, I'll show you how to make a simple api that converts radians to degrees. We should end up with something like this:
+In this tutorial, I'll show you how to make a simple api that converts degrees to radians. We should end up with something like this:
 
 
     $ curl "http://serverIp:8888/convert?angle=180"

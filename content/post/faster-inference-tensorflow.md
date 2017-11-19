@@ -36,7 +36,7 @@ This is one optimisation example but XLA comes with many others
 # Using XLA
 In this tutorial, I’ll show you how to use XLA.
  
-**Important**: At the time of writing, you have to compile with a special flag in order to Tensorflow in order benefit from XLA. [Building Tensorflow](https://www.tensorflow.org/install/install_sources) is fairly straightforward and takes about one hour on a regular machine.
+**Important**: At the time of writing, you have to compile Tensorflow with a special flag in order benefit from XLA. [Building Tensorflow](https://www.tensorflow.org/install/install_sources) is fairly straightforward and takes about one hour on a regular machine.
 
 Once built, enabling XLA for your graph is very simple:
    
