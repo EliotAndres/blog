@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://ndres.me/"
+baseurl = "https://ndres.me/"
 themesDir = "themes"
 languageCode = "en-us"
 title = "Eliot Andres blog"

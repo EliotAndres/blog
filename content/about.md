@@ -12,6 +12,7 @@ I am a freelance machine learning engineer with a focus on porting models from p
 
 - [Kaggle Past Solutions](http://ndres.me/kaggle-past-solutions/): A sortable and searchable compilation of solutions to past Kaggle competitions.
 - [pretrained.ml](http://pretrained.ml/): A sortable and searchable compilation of solutions to past Kaggle competitions.
+- [Hopsell](https://hopsell.co/): Shopify recommendation
 
 
 ## Contact
