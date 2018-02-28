@@ -17,6 +17,7 @@ I am a freelance machine learning engineer with a focus on porting models from p
 
 ## Contact
 
-You can reach me on [Twitter](https://twitter.com/eliotandres), [Linkedin](https://www.linkedin.com/in/eliotandres), [GitHub](https://github.com/EliotAndres) or using eliot [at] ndres.me
+You can reach me on [Twitter](https://twitter.com/eliotandres), [Linkedin](https://www.linkedin.com/in/eliotandres), [GitHub](https://github.com/EliotAndres)
+
 I am sometimes available on [Malt](https://www.malt.fr/profile/eliotandres)
 
