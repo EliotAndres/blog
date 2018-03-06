@@ -6,7 +6,7 @@ summary = "Some of my side projects"
 +++
 
 ## About
-I am a freelance machine learning engineer with a focus on porting models from prototypes to production. I am currently available for your consulting projects. 
+I am a freelance machine learning engineer with a focus on porting models from prototypes to production. I am sometimes available for your consulting projects. 
 
 ## Some of my side projects
 

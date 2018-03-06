@@ -34,7 +34,7 @@ googleAnalytics = "UA-105312541-1"
 	olderPosts = ""
 	newerPosts = ""
 	readMore = ""
-	copyright = "While the models are training: a deep learning blog"
+	copyright = "While the models are training: a machine learning blog"
 	# Sharing options and author information in posts
 	aboutAuthor = "Deep Learning Engineer"
 	tweet = ""
