@@ -47,11 +47,11 @@ This one is not really an notebook extension. TQDM is a progress bar library. Bu
 <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">TIL: tqdm (the <a href="https://twitter.com/hashtag/Python?src=hash&amp;ref_src=twsrc%5Etfw">#Python</a> progress bar library) has a specialized &quot;tqdm_notebook&quot; function for use in Jupyter Notebooks.<br><br>No more messed up progress bars in my notebooks - hooray!<a href="https://t.co/r0jAQXQ6TM">https://t.co/r0jAQXQ6TM</a> <a href="https://t.co/FyYBRm2qE1">pic.twitter.com/FyYBRm2qE1</a></p>&mdash; Randy Olson (@randal_olson) <a href="https://twitter.com/randal_olson/status/969657169342734336?ref_src=twsrc%5Etfw">2 mars 2018</a></blockquote>
 
 ## 5 - %debug
-Not a notebook extension but an [iPython magic](http://ipython.readthedocs.io/en/stable/interactive/magics.html) command. For a great explaination, I suggest reading the [full twitter thread](https://twitter.com/radekosmulski/status/945739571735748609) from [Radek Osmulski](https://twitter.com/radekosmulski) 
+Not a notebook extension but an [IPython magic](http://ipython.readthedocs.io/en/stable/interactive/magics.html) command. For a great explaination, I suggest reading the [full twitter thread](https://twitter.com/radekosmulski/status/945739571735748609) from [Radek Osmulski](https://twitter.com/radekosmulski) 
 <blockquote class="twitter-tweet" data-lang="fr"><p lang="en" dir="ltr">Favorite recent jupyter notebook discovery - the %debug magic:<br><br>1. Get an exception.<br>2. Insert a new cell, type %debug and run it.<br><br>An interactive debugger will open bringing you to where the exception occurred and allowing you to look around! <a href="https://t.co/9DSnSbpu15">pic.twitter.com/9DSnSbpu15</a></p>&mdash; Radek (@radekosmulski) <a href="https://twitter.com/radekosmulski/status/945739571735748609?ref_src=twsrc%5Etfw">26 décembre 2017</a></blockquote>
 
 ## 6 - Smaller extensions and other tips
-- **%lsmagic**: Run this in a cell to list all available iPython magics
+- **%lsmagic**: Run this in a cell to list all available IPython magics
 - **Zen mode extension**: removes the menus for less distractions
 - **Execute time extension**: shows how long a cell took to run
 - **autoreload**: Autoreloads external files without having to restart the notebook. To enable it:
@@ -60,6 +60,17 @@ Not a notebook extension but an [iPython magic](http://ipython.readthedocs.io/en
         %autoreload 2
 
 You know a must-have notebook extension ? Hit me on twitter or make a pull request on this blog post !
+
+---
+
+### Edit on Wed, Mar 7, 2018:
+Some people [on Reddit](https://www.reddit.com/r/MachineLearning/comments/82fcw0/d_top_5_best_jupyter_notebook_extensions/) suggested a few more:
+
+- **[Variable inspector](http://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/varInspector/README.html)**: displays all variables in a floating window
+- **CodeMirror Keymap**: lets you choose between key bindings, such as vim
+- **Scratchpad**: executes code against the current kernel without modifying the notebook document
+- **Splitcells**: splits cells vertically
+
 
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
