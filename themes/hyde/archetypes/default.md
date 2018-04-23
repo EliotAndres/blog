@@ -1,6 +1,10 @@
 +++
 Description = ""
-Tags = ["Development", "golang"]
-Categories = ["Development", "GoLang"]
+Tags = []
+Categories = []
+description = ""
+title = "WIP"
+summary = ""
 menu = "main"
+draft = false
 +++
