@@ -50,8 +50,8 @@ You'll find an animation of the community merging below:
 Video credits to [Keith Jolley](https://github.com/keithpjolley)
 
 # Make it yourself
-I'm currently writting a tutorial on how to make it yourself. When it'll be ready, I'll update this blog post.
-
+I'm currently writing a tutorial on how to make it yourself. When it'll be ready, I'll update this blog post.
+**Update**: [here's the blog post](/post/friend-graph-tutorial/)
 
 
 
