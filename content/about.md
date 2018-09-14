@@ -1,23 +1,30 @@
 +++
-title = "About Me"
 date = "2017-08-27"
 menu = "main"
 summary = "Some of my side projects"
+hidedate = true
+custom_css = ["css/chatbot.css"]
 +++
 
-## About
-I am a freelance machine learning engineer with a focus on porting models from prototypes to production. I may be available for your consulting projects.
+<div ng-controller="MainController" ng-app="app" class="chatbot-wrapper">
 
-## Some of my side projects
+<div class="message-list" id="message-list">
+<ul class="messages clearfix">
+    <li ng-repeat="message in messages" class="message" ng-class="message.question ? 'question' : 'answer'">{{message.title}}</li>
+</ul>
+</div>
 
-- [Kaggle Past Solutions](http://ndres.me/kaggle-past-solutions/): A sortable and searchable compilation of solutions to past Kaggle competitions.
-- [pretrained.ml](http://pretrained.ml/): A sortable and searchable compilation of solutions to past Kaggle competitions.
-- [Instaposter](http://instaposter.fr/): A side project to explore influencer marketing
+<div class="input-box">
+<form class="form-inline input-form" ng-submit="submit()">
+<div class="form-group">
+    <input ng-model="search" class="form-control light-input" placeholder="Enter your question here">
+</div>
+</form>
+<button class="speak-button" ng-click="listenToSpeech()"><img class="button-image" ng-src="{{listening ? '../images/mic-red.svg' : '../images/mic.svg'}}"></img></button>
+<button class="mute-button" ng-click="toggleMute()"><img class="button-image mute-image" ng-src="{{muted? '../images/volume-x.svg' : '../images/volume-2.svg'}}"></img></button>
+</div>
+</div>
 
-
-## Contact
-
-You can reach me on [Twitter](https://twitter.com/eliotandres), [Linkedin](https://www.linkedin.com/in/eliotandres), [GitHub](https://github.com/EliotAndres)
-
-I am sometimes available on [Malt](https://www.malt.fr/profile/eliotandres) or [Toptal](https://www.toptal.com/resume/eliot-andres)
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="../js/app.js"></script>
+<link rel="stylesheet" href="../css/chatbot.css" media="print">

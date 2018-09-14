@@ -1,0 +1,88 @@
+/*Custom code*/
+
+ul.messages {
+  list-style: none;
+}
+
+.message {
+  clear: both;
+  border-radius: 13px;
+
+}
+
+.answer {
+  margin-right: 40px;
+  background-color: lightblue;
+
+}
+
+.question {
+  float: right;
+  color: white;
+  background-color: #1b95e0;
+  margin-left: 40px;
+}
+
+form {
+  display: block;
+}
+
+.input-box {
+  background-color: white;
+  position: relative;
+  border: 1px solid lightgrey;
+}
+
+.input-form {
+}
+
+.message-list {
+  height: 70vh;
+  overflow: scroll;
+}
+
+@media (min-width: 64em) {
+  .chatbot-wrapper {
+    margin-left: -4rem;
+  }
+}
+
+.clearfix {
+  display: inline-block;
+  width: 100%;
+}
+
+.light-input {
+  border: none transparent !important;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.speak-button {
+  border: 0px;
+  background: transparent;
+  font-size: 20px;
+  position: absolute;
+  right: 0px;
+  top: 0;
+}
+.mute-button {
+  border: 0px;
+  background: transparent;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  cursor: pointer;
+}
+
+.button-image {
+  width: 20px;
+  margin-top: 10px;
+}
+
+.mute-image {
+  margin-right: 5px;
+}

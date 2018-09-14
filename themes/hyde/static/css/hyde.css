@@ -94,6 +94,7 @@ html {
   border-radius: 50%;
   width: 100px;
   display: inline;
+  border: 2px #fff solid;
 }
 
 .main-nav {
@@ -284,3 +285,6 @@ figcaption > p {
   font-size: 0.8em;
   font-style: italic;
 }
+
+
+
