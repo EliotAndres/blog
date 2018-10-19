@@ -2,19 +2,14 @@ var app = angular.module('app', []);
 
 app
     .controller('MainController', function MainController($scope, $timeout, $http) {
-        var audioContext = new AudioContext();
-        var gainNode = audioContext.createGain();
-        gainNode.gain.value = 0;
-        gainNode.connect(audioContext.destination);
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        window.audioContext = null;
         $scope.muted = true
-
         $scope.search = '';
-        $scope.messages = [{title: 'This is a test This is a test This is a test This is a test This is a testThis is a test This is a test This is a test This is a test', question: true},
-            {title: 'This is a test This is a test This is a test This is a test This is a testThis is a test This is a test This is a test This is a test', question: false},
-            {title: 'This is a test This is a test This is a test This is a test This is a testThis is a test This is a test This is a test This is a test', question: false},
-            {title: 'This is a test This is a test This is a test This is a test This is a testThis is a test This is a test This is a test This is a test', question: false},
-            {title: 'This is a test This is a test This is a test This is a test This is a testThis is a test This is a test This is a test This is a test', question: false},
-            {title: 'This is a test3', question: true}, {title: 'This is a test4', question: false},];
+        $scope.messages = [];
+        $scope.sessionId = guid()
+        $scope.questions = ['Where did you study ?', 'Do you know TensorFlow ?',
+            'Where do you see yourself in 5 years ?', 'What are your hobbies ?']
 
         $scope.listenToSpeech = function() {
             if (typeof webkitSpeechRecognition === 'undefined') {
@@ -42,18 +37,29 @@ app
             }
         }
 
-        $scope.submit = function () {
-            sendToChatbot($scope.search)
+        $scope.submit = function (query) {
+            sendToChatbot(query || $scope.search)
         }
 
-        $scope.toggleMute = function (e) {
-            if ($scope.muted) {
-                audioContext.resume()
-                gainNode.gain.value = 1;
-            } else {
-                gainNode.gain.value = 0;
+        window.toggleMute = function (e) {
+            console.log('toggle mute')
+            if (window.audioContext === null) {
+                window.audioContext = new AudioContext();
+                $scope.gainNode = window.audioContext.createGain();
+                $scope.gainNode.gain.value = 1;
+                $scope.gainNode.connect(window.audioContext.destination);
             }
-            $scope.muted = !$scope.muted
+
+            $timeout(function () {
+                if ($scope.muted) {
+                    window.audioContext.resume()
+                    $scope.gainNode.gain.value = 1;
+                } else {
+                    $scope.gainNode.gain.value = 0;
+                }
+                $scope.muted = !$scope.muted
+            }, 0)
+
         }
 
         var scrollToBottom = function () {
@@ -68,7 +74,7 @@ app
             scrollToBottom()
             $http({
                 method: 'GET',
-                url: 'https://us-central1-job-interview-b2b48.cloudfunctions.net/helloWorld?text=' + text
+                url: 'https://us-central1-job-interview-b2b48.cloudfunctions.net/helloWorld?text=' + text + '&session=' + $scope.sessionId
             }).then(function successCallback(response) {
                 console.log(response.data)
                 playByteArray(response.data.outputAudio.data)
@@ -89,17 +95,30 @@ app
         }
 
         function playByteArray( bytes ) {
-            var buffer = new Uint8Array( bytes.length );
-            buffer.set( new Uint8Array(bytes), 0 );
+            if (window.audioContext == null) {
+                return
+            }
 
-            audioContext.decodeAudioData(buffer.buffer, play);
+            var buffer = new Uint8Array( bytes.length );
+            buffer.set(new Uint8Array(bytes), 0);
+
+            window.audioContext.decodeAudioData(buffer.buffer, play);
         }
 
-        function play( audioBuffer ) {
-            var source = audioContext.createBufferSource();
+        function play(audioBuffer) {
+            var source = window.audioContext.createBufferSource();
             source.buffer = audioBuffer;
-            source.connect( gainNode );
+            source.connect($scope.gainNode);
             source.start(0);
+        }
+
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
         }
 
 

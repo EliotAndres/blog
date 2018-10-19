@@ -37,13 +37,16 @@ form {
 }
 
 .message-list {
-  height: 70vh;
+  max-height: 60vh;
   overflow: scroll;
 }
 
 @media (min-width: 64em) {
   .chatbot-wrapper {
     margin-left: -4rem;
+  }
+  .intro-wrapper {
+    margin-left: 4rem;
   }
 }
 
@@ -80,9 +83,15 @@ form {
 
 .button-image {
   width: 20px;
+  height: 20px;
   margin-top: 10px;
 }
 
 .mute-image {
   margin-right: 5px;
+}
+
+.default-question {
+  cursor: pointer;
+  text-decoration: underline;
 }

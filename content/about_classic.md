@@ -3,6 +3,7 @@ title = "About Me"
 date = "2017-08-27"
 menu = "main"
 summary = "Some of my side projects"
+hidedate = true
 +++
 
 ## About
@@ -16,7 +17,6 @@ Processing 100+ million images per month with deep learning](https://www.dotconf
 ## Some of my side projects
 
 - [Kaggle Past Solutions](http://ndres.me/kaggle-past-solutions/): A sortable and searchable compilation of solutions to past Kaggle competitions.
-- [pretrained.ml](http://pretrained.ml/): A sortable and searchable compilation of solutions to past Kaggle competitions.
 - [Instaposter](http://instaposter.fr/): A side project to explore influencer marketing
 
 
