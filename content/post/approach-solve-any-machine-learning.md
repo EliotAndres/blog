@@ -21,7 +21,7 @@ I can already hear you screaming behind your screen *« there is no magic approa
 Before detailing each step, I’d like to point out that the winning team solution is not used as is.
  Mostly because your problem will not be perfectly identical to the competition’s problem.
 
-## 1 - Finding the a matching machine learning competition
+## 1 - Finding a matching machine learning competition
 To do so, I recommend using Google or [Kaggle Past Solutions](https://ndres.me/kaggle-past-solutions/). (**disclaimer**: I created Kaggle Past Solutions, precisely for this reason. It’s open-source and free)
 
 How to find a matching competition ? Let’s use an example. I was recently working
@@ -52,7 +52,7 @@ is of very good quality. It quotes sources, contains a good explanation and the 
 
 The solution will be used as a baseline. You will know what technology to use
 (convolutions, gradient boosting, LSTMs) and what part of the data to exploit.
-While you will not get a working solution right away, you’ll at least now that
+While you will not get a working solution right away, you’ll at least know that
  you’re using the right tools and the right data.
 
 Moreover, you can draw inspiration and learn from:
