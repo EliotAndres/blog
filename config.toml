@@ -14,7 +14,7 @@ googleAnalytics = "UA-105312541-1"
 [params]
 	name = "Eliot Andres"
 	description = "While the models are training"
-	bio = "Freelance machine learning and computer vision engineer. Available for consulting jobs. [More](/about/)"
+	bio = "Freelance machine learning and computer vision engineer. Author of (https://amzn.to/2Znjpht) [More](/about/)"
 	# Enter optionally your twitter account
 	twitter = ""
 	enableRSS = true

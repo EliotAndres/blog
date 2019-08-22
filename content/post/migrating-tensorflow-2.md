@@ -26,14 +26,14 @@ Here's the good news: TensorFlow 2.0 provides an **automatic migration tool**. A
     tf_upgrade_v2 --intree ./project_directory --outtree ./project_directory_updated
     
 
-So what is this tool doing ? It's mostly moving your code to `tf.compat.v1`, changing the name of the arguments if necessary. 
+So what is this tool doing ? It's mostly moving your code to `tf.compat.v1` and changing the name of the arguments if necessary. 
 The script should update your code to make it work, but will not make it follow TensorFlow 2.0 best practices. 
 
 Moreover, it does not work with `tf.contrib`. Indeed, this module has been removed from TensorFlow 2.0, 
 with most of the APIs moved to TensorFlow core or external repositories. [See the details here](https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md)
 
 ## Migrating your code manually
-While your code will work using `tf.compat.v1`, to follow TensorFlow 2.0 new philosophy you will have to update your code. 
+While your code will work using `tf.compat.v1`, to follow TensorFlow 2.0 new philosophy you will have to update your code manually. 
 Here are the biggest changes:
 
 - as stated above, `tf.contrib` will disappear
