@@ -5,7 +5,7 @@ description = "Guide on how to use the new @tf.function decorator"
 title = "TensorFlow 2.0: @tf.function explained with examples"
 summary = "Guide on how to use the new @tf.function decorator"
 menu = "main"
-draft = false
+draft = true
 date = 2019-01-14T09:30:49-05:00
 +++
 
