@@ -6,6 +6,7 @@ summary = "In this tutorial, I'll show you how to export your matplotlib plots a
 
 +++
 
+**Edit**: There is now a much better and simpler way of creating gifs, a [libray called "gif"](https://github.com/maxhumber/gif)
 ## The problem
 
 If you Google how to make an animated Matplotlib graph, you end up with code like that:
