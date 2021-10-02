@@ -17,7 +17,6 @@ Processing 100+ million images per month with deep learning](https://www.dotconf
 ## Some of my projects
 
 - [Kaggle Past Solutions](http://ndres.me/kaggle-past-solutions/): A sortable and searchable compilation of solutions to past Kaggle competitions.
-- [PhotoRoom](https://photoroom.app/): A side project to explore influencer marketing
 
 
 ## Contact
