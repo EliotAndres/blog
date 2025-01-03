@@ -14,7 +14,7 @@ googleAnalytics = "UA-105312541-1"
 [params]
 	name = "Eliot Andres"
 	description = "While the models are training"
-	bio = "CTO at [PhotoRoom](https://photoroom.com/), author of [the book](https://amzn.to/2Znjpht) Hands-On Computer Vision with TensorFlow 2 [More](/about_classic/)"
+	bio = "CTO at [Photoroom](https://photoroom.com/), author of [the book](https://amzn.to/2Znjpht) Hands-On Computer Vision with TensorFlow 2 [More](/about_classic/)"
 	# Enter optionally your twitter account
 	twitter = ""
 	enableRSS = true
